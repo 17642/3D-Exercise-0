@@ -442,7 +442,7 @@ MonoBehaviour:
   fadeDuration: 1
   player: {fileID: 958129154}
   exitBackgroundImageCanvasGroup: {fileID: 1103507103}
-  caughtBackGroundImageCanvasGroup: {fileID: 0}
+  caughtBackGroundImageCanvasGroup: {fileID: 710491341}
 --- !u!65 &784109102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4395,6 +4395,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1922381431780351327, guid: edb14efb312704e4ca931ec7d9408188,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 958129156}
+    - target: {fileID: 1922381431780351327, guid: edb14efb312704e4ca931ec7d9408188,
+        type: 3}
+      propertyPath: gameEnding
+      value: 
+      objectReference: {fileID: 784109101}
     - target: {fileID: 8093277639938840779, guid: edb14efb312704e4ca931ec7d9408188,
         type: 3}
       propertyPath: m_RootOrder
