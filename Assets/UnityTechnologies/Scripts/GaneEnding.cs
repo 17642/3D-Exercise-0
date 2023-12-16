@@ -10,6 +10,10 @@ public class GaneEnding : MonoBehaviour
     public GameObject player;
     public CanvasGroup exitBackgroundImageCanvasGroup;
     public CanvasGroup caughtBackGroundImageCanvasGroup;
+    public AudioSource exitAudio;
+    public AudioSource CaughtAudio;
+
+    bool m_hasAudioPlayed;
     // Start is called before the first frame update
     bool m_IsPlayerAtExit = false;
     bool m_IsPlayerCaught = false;
@@ -19,10 +23,10 @@ public class GaneEnding : MonoBehaviour
 
         if (m_IsPlayerAtExit)
         {
-            EndLevel(exitBackgroundImageCanvasGroup,false);
+            EndLevel(exitBackgroundImageCanvasGroup,false,exitAudio);
         }else if (m_IsPlayerCaught)
         {
-            EndLevel(caughtBackGroundImageCanvasGroup,true);
+            EndLevel(caughtBackGroundImageCanvasGroup,true,CaughtAudio);
         }
     }
 
@@ -39,10 +43,16 @@ public class GaneEnding : MonoBehaviour
         }
     }
 
-    void EndLevel(CanvasGroup ImageCanvasGroup, bool doRestart)
+    void EndLevel(CanvasGroup ImageCanvasGroup, bool doRestart,AudioSource audio)
     {
         m_Timer += Time.deltaTime;
         ImageCanvasGroup.alpha = m_Timer / fadeDuration;
+        if (!m_hasAudioPlayed)
+        {
+            m_hasAudioPlayed = true;
+
+            audio.Play();
+        }
         if (m_Timer > fadeDuration+displayImageDuration)
         {
             if (doRestart)

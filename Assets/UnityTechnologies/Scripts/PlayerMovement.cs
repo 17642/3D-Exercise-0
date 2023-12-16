@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
     Rigidbody m_Rigidbody;
+    AudioSource m_AudioSource;
 
     public float turnSpeed=20f;
 
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_Animator = GetComponent<Animator>();
         m_Rigidbody = GetComponent<Rigidbody>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,20 @@ public class PlayerMovement : MonoBehaviour
 
         m_Rotation = Quaternion.LookRotation(desiredForward);
 
+        if (isWalking)
+        {
+            if (!m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Play();
+            }
+        }
+        else
+        {
+            if(m_AudioSource.isPlaying)
+            {
+                m_AudioSource.Stop();
+            }
+        }
 
     }
 
